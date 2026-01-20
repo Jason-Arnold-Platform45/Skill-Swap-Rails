@@ -7,7 +7,7 @@ class Skill < ApplicationRecord
   validates :skill_type, presence: true,
                    inclusion: { in: %w[offer request] }
 
-  def taken
+  def taken?
     matches.where(status: "accepted").exists?
   end
 end

@@ -1,26 +1,20 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
-  include Devise::JWT::RevocationStrategies::JTIMatcher
-
   devise :database_authenticatable,
          :registerable,
          :recoverable,
          :rememberable,
-         :validatable,
-         :jwt_authenticatable,
-         jwt_revocation_strategy: self
+         :validatable
 
   has_many :skills, dependent: :destroy
 
   has_many :requested_matches,
            class_name: "Match",
-           foreign_key: "requester_id",
+           foreign_key: :requester_id,
            dependent: :destroy
 
   has_many :provided_matches,
            class_name: "Match",
-           foreign_key: "provider_id",
+           foreign_key: :provider_id,
            dependent: :destroy
 
   validates :username,

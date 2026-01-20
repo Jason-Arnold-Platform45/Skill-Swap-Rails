@@ -3,7 +3,7 @@ class Match < ApplicationRecord
   belongs_to :provider, class_name: "User"
   belongs_to :skill
 
-  validates :requester_id, :provider_id, :skill_id, presence: true
+  validates :requester, :provider, :skill, presence: true
   validates :status, inclusion: { in: %w[pending accepted rejected completed] }
 
   validates :skill_id, uniqueness: {
@@ -21,7 +21,7 @@ class Match < ApplicationRecord
   private
 
   def cannot_match_own_skill
-    return if skill.nil?
+    return unless skill
     errors.add(:base, "Cannot request your own skill") if skill.user_id == requester_id
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_16_093843) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_20_070535) do
   create_table "matches", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "provider_id", null: false
