@@ -361,3 +361,93 @@ body > a:hover {
 .auth-links a:hover {
   text-decoration: underline;
 }
+
+/* =========================
+   SKILL FORM
+========================= */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+}
+
+/* =========================
+   FORM ACTIONS
+========================= */
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* =========================
+   ALERT (ERRORS)
+========================= */
+
+.alert-danger {
+  background-color: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 16px 18px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+}
+
+.alert-danger h4 {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.alert-danger ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.alert-danger li {
+  font-size: 14px;
+}
+
+/* =========================
+   BUTTONS (FORM)
+========================= */
+
+.btn-primary {
+  background-color: #4f46e5;
+  color: white;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+.btn-secondary:hover {
+  background-color: #d1d5db;
+}
