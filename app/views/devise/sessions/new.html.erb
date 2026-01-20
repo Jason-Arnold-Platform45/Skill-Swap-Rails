@@ -1,26 +1,27 @@
-<h1>Login</h1>
+<div class="auth-page">
+  <div class="auth-card">
+    <h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div>
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <div class="auth-field">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <div class="auth-field">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+
+      <div class="auth-actions">
+        <%= f.submit "Log in" %>
+      </div>
+
+    <% end %>
+
+    <div class="auth-links">
+      <%= link_to "Sign up", new_user_registration_path %>
+    </div>
   </div>
-
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-
-  <div>
-    <%= f.submit "Login" %>
-  </div>
-<% end %>
-
-<p>
-  Don’t have an account?
-  <%= link_to "Sign up", new_user_registration_path %>
-</p>
-<p>
-  Forgot your password?
-  <%= link_to "Reset it", new_user_password_path %>
-</p>
+</div>
