@@ -34,15 +34,15 @@
 
         <% if match.status == "pending" && match.provider == current_user %>
           <div class="match-actions">
-            <%= link_to "Accept",
-                        accept_match_path(match),
-                        method: :patch,
-                        class: "btn btn-success" %>
+            <%= button_to "Accept",
+                          accept_match_path(match),
+                          method: :patch,
+                          class: "btn btn-success" %>
 
-            <%= link_to "Reject",
-                        reject_match_path(match),
-                        method: :patch,
-                        class: "btn btn-danger" %>
+            <%= button_to "Reject",
+                          reject_match_path(match),
+                          method: :patch,
+                          class: "btn btn-danger" %>
           </div>
         <% end %>
       </div>

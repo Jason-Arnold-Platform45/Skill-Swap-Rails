@@ -1,5 +1,12 @@
 <div class="container skills-page">
-  <h1>Available Skills</h1>
+
+  <div class="skills-header">
+    <h1>Available Skills</h1>
+
+    <%= link_to "Create Skill",
+                new_skill_path,
+                class: "btn btn-primary" %>
+  </div>
 
   <% @skills.each do |skill| %>
     <div class="skill-card">

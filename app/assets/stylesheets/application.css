@@ -1,10 +1,230 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+/* =========================
+   GLOBAL
+========================= */
+
+body {
+  margin: 0;
+  background-color: #f3f4f6;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: #111827;
+}
+
+h1, h2, h3 {
+  margin-bottom: 16px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+/* =========================
+   SHARED CONTAINER
+========================= */
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+/* =========================
+   USERS SHOW (PROFILE PAGE)
+   users/show.html.erb
+========================= */
+
+.profile-page h1 {
+  margin-bottom: 28px;
+}
+
+.profile-section {
+  background: #ffffff;
+  padding: 20px 24px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.profile-section h2 {
+  margin-bottom: 14px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 6px;
+}
+
+.skill-list,
+.match-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-list li,
+.match-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.skill-list li:last-child,
+.match-list li:last-child {
+  border-bottom: none;
+}
+
+.skill-list a,
+.match-list a {
+  color: #4f46e5;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.skill-list a:hover,
+.match-list a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   MATCHES INDEX
+   matches/index.html.erb
+========================= */
+
+.matches-page h1 {
+  margin-bottom: 24px;
+}
+
+.matches-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.match-card {
+  background: #ffffff;
+  padding: 20px 22px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.match-card h3 {
+  margin-bottom: 12px;
+}
+
+.match-card p {
+  margin-bottom: 8px;
+}
+
+/* =========================
+   MATCH STATUS
+========================= */
+
+.status {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status.pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status.accepted {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status.rejected {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* =========================
+   MATCH ACTION BUTTONS
+========================= */
+
+.match-actions {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+}
+
+/* =========================
+   BUTTONS (already used)
+========================= */
+
+.btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-success {
+  background-color: #16a34a;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #dc2626;
+  color: white;
+}
+
+.btn-success:hover,
+.btn-danger:hover {
+  opacity: 0.9;
+}
+
+/* =========================
+   MATCH SHOW PAGE
+   matches/show.html.erb
+   (NO container wrapper there)
+========================= */
+
+body > h1 {
+  max-width: 800px;
+  margin: 32px auto 20px;
+}
+
+body > p {
+  max-width: 800px;
+  margin: 0 auto 10px;
+  background: #ffffff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body > a {
+  display: block;
+  max-width: 800px;
+  margin: 20px auto;
+  color: #4f46e5;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+body > a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   SKILLS HEADER
+========================= */
+
+.skills-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.btn-primary {
+  background-color: #4f46e5;
+  color: white;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
