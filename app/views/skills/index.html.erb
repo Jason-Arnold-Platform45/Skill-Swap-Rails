@@ -1,2 +1,51 @@
-<h1>Skills#index</h1>
-<p>Find me in app/views/skills/index.html.erb</p>
+<div class="container skills-page">
+  <h1>Available Skills</h1>
+
+  <% @skills.each do |skill| %>
+    <div class="skill-card">
+      <h3>
+        <%= link_to skill.title, skill_path(skill) %>
+      </h3>
+
+      <p>
+        <strong>Type:</strong>
+        <%= skill.skill_type.capitalize %>
+      </p>
+
+      <p>
+        <strong>Posted by:</strong>
+        <%= skill.user.username %>
+      </p>
+
+      <div class="skill-actions">
+
+        <% if skill.user == current_user %>
+          <%= link_to "View", skill_path(skill), class: "btn" %>
+          <%= link_to "Edit", edit_skill_path(skill), class: "btn" %>
+          <%= link_to "Delete",
+                      skill_path(skill),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" },
+                      class: "btn btn-danger" %>
+
+        <% elsif skill.taken? %>
+          <span class="status taken">Already matched</span>
+
+        <% else %>
+          <% if skill.skill_type == "offer" %>
+            <%= button_to "Request Help",
+                          matches_path(skill_id: skill.id),
+                          method: :post,
+                          class: "btn btn-success" %>
+          <% else %>
+            <%= button_to "Offer Help",
+                          matches_path(skill_id: skill.id),
+                          method: :post,
+                          class: "btn btn-success" %>
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+  <% end %>
+</div>

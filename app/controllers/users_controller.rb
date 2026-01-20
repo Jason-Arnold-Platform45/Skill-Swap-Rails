@@ -7,5 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @skills = @user.skills
+    @matches = Match.for_user(@user)
   end
 end

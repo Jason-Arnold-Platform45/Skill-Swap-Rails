@@ -1,2 +1,51 @@
-<h1>Matches#index</h1>
-<p>Find me in app/views/matches/index.html.erb</p>
+<div class="container matches-page">
+  <h1>Your Matches</h1>
+
+  <% if @matches.empty? %>
+    <p>No matches yet.</p>
+  <% end %>
+
+  <div class="matches-list">
+    <% @matches.each do |match| %>
+      <div class="match-card">
+        <h3><%= match.skill.title %></h3>
+
+        <p>
+          <strong>Skill type:</strong>
+          <%= match.skill.skill_type.capitalize %>
+        </p>
+
+        <p>
+          <strong>Requester:</strong>
+          <%= match.requester.username %>
+        </p>
+
+        <p>
+          <strong>Provider:</strong>
+          <%= match.provider.username %>
+        </p>
+
+        <p>
+          <strong>Status:</strong>
+          <span class="status <%= match.status %>">
+            <%= match.status.capitalize %>
+          </span>
+        </p>
+
+        <% if match.status == "pending" && match.provider == current_user %>
+          <div class="match-actions">
+            <%= link_to "Accept",
+                        accept_match_path(match),
+                        method: :patch,
+                        class: "btn btn-success" %>
+
+            <%= link_to "Reject",
+                        reject_match_path(match),
+                        method: :patch,
+                        class: "btn btn-danger" %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

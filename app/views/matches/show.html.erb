@@ -1,2 +1,23 @@
-<h1>Matches#show</h1>
-<p>Find me in app/views/matches/show.html.erb</p>
+<h1>Match Details</h1>
+
+<p>
+  <strong>Skill:</strong>
+  <%= @match.skill.title %>
+</p>
+
+<p>
+  <strong>Requester:</strong>
+  <%= @match.requester.username %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @match.provider.username %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @match.status.capitalize %>
+</p>
+
+<%= link_to "Back to matches", matches_path %>

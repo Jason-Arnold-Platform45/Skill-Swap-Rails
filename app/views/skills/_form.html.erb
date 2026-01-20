@@ -1,0 +1,38 @@
+<%= form_with model: @skill, local: true do |f| %>
+  <% if @skill.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@skill.errors.count, "error") %> prevented this skill from saving:</h4>
+      <ul>
+        <% @skill.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, "Skill Title" %>
+    <%= f.text_field :title, class: "form-control", placeholder: "e.g. Ruby on Rails" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description,
+          class: "form-control",
+          rows: 4,
+          placeholder: "Describe what you can offer or what you want to learn" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :skill_type, "Type" %>
+    <%= f.select :skill_type,
+          [["Offer a skill", "offer"], ["Request a skill", "request"]],
+          {},
+          class: "form-control" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", skills_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>

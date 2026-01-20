@@ -9,6 +9,23 @@ class MatchesController < ApplicationController
   def show
   end
 
+  def create
+    skill = Skill.find(params[:skill_id])
+
+    @match = Match.new(
+      skill: skill,
+      requester: current_user,
+      provider: skill.user,
+      status: "pending"
+    )
+
+    if @match.save
+      redirect_to matches_path, notice: "Match request sent."
+    else
+      redirect_to skills_path, alert: @match.errors.full_messages.to_sentence
+    end
+  end
+
   def accept
     authorize_provider!
     @match.update!(status: "accepted")
@@ -23,14 +40,13 @@ class MatchesController < ApplicationController
 
   private
 
-    def set_match
-      @match = Match.find(params[:id])
-    end
+  def set_match
+    @match = Match.find(params[:id])
+  end
 
-    def authorize_provider!
-      unless @match.provider == current_user
-        redirect_to matches_path, alert: "You are not allowed to do that."
-        return
-      end
+  def authorize_provider!
+    unless @match.provider == current_user
+      redirect_to matches_path, alert: "You are not allowed to do that."
     end
+  end
 end

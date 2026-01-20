@@ -1,2 +1,54 @@
-<h1>Skills#show</h1>
-<p>Find me in app/views/skills/show.html.erb</p>
+<div class="container skill-show-page">
+  <h1><%= @skill.title %></h1>
+
+  <p>
+    <strong>Type:</strong>
+    <%= @skill.skill_type.capitalize %>
+  </p>
+
+  <p>
+    <strong>Description:</strong><br>
+    <%= simple_format(@skill.description) %>
+  </p>
+
+  <p>
+    <strong>Posted by:</strong>
+    <%= @skill.user.username %>
+  </p>
+
+  <hr>
+
+  <div class="skill-actions">
+    <% if @skill.user == current_user %>
+      <%= link_to "Edit Skill", edit_skill_path(@skill), class: "btn" %>
+      <%= link_to "Delete Skill",
+                  skill_path(@skill),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" },
+                  class: "btn btn-danger" %>
+
+    <% elsif @skill.taken? %>
+      <span class="status taken">Already matched</span>
+
+    <% else %>
+      <% if @skill.skill_type == "offer" %>
+        <%= button_to "Request Help",
+                      matches_path(skill_id: @skill.id),
+                      method: :post,
+                      class: "btn btn-success" %>
+      <% else %>
+        <%= button_to "Offer Help",
+                      matches_path(skill_id: @skill.id),
+                      method: :post,
+                      class: "btn btn-success" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <div class="navigation-links">
+    <%= link_to "← Back to Skills", skills_path, class: "btn btn-secondary" %>
+    <%= link_to "Go to My Matches", matches_path, class: "btn btn-secondary" %>
+  </div>
+</div>
